@@ -250,15 +250,12 @@ export default function TeacherDashboard() {
         {/* Header */}
         <div className="dashboard-header">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-            <div style={{ maxWidth: '600px' }}>
-              <h1 className="dashboard-title">Teacher <span className="text-editorial">*Dashboard*</span></h1>
-              <p className="dashboard-subtitle" style={{ marginTop: '16px' }}>
-                <span style={{ float: 'left', fontSize: '64px', lineHeight: '0.8', marginRight: '16px', fontFamily: "'Playfair Display', serif", fontWeight: '700' }}>M</span>
-                anage your assignments and track student progress with precision and elegance. Our editorial-grade portal ensures that every worksheet and submission is treated with the care it deserves.
-              </p>
+            <div>
+              <h1 className="dashboard-title">Teacher Dashboard</h1>
+              <p className="dashboard-subtitle">Manage your assignments and track student progress</p>
             </div>
             <button id="btn-create-assignment" className="btn btn-primary" onClick={openCreate}>
-              <span>New Assignment</span>
+              <Plus size={18} /> New Assignment
             </button>
           </div>
         </div>

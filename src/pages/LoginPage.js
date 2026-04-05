@@ -59,8 +59,8 @@ export default function LoginPage() {
       <div className="auth-card">
         {/* Logo */}
         <div className="auth-logo">
-          <div className="auth-logo-text monospace" style={{ color: 'var(--accent)', fontSize: 24, fontWeight: 800 }}>
-            Tailwebs<span style={{ opacity: 0.3 }}>_</span>CORE
+          <div className="auth-logo-text">
+            tailwebs<span className="auth-logo-dot">.</span>
           </div>
         </div>
 
@@ -195,7 +195,7 @@ export default function LoginPage() {
 
         <p style={{ marginTop: 24, textAlign: 'center', fontSize: 13, color: 'var(--text-secondary)' }}>
           {mode === 'login' ? "Don't have an account?" : "Already have an account?"}
-          <button type="button" className="btn-link" onClick={toggleMode} style={{ marginLeft: 6, fontWeight: 600, color: 'var(--accent)' }}>
+          <button type="button" className="btn-link" onClick={toggleMode} style={{ marginLeft: 6, fontWeight: 600, color: 'var(--red)' }}>
             {mode === 'login' ? 'Register' : 'Sign In'}
           </button>
         </p>
@@ -203,8 +203,8 @@ export default function LoginPage() {
         {/* Quick Setup Hint */}
         <div style={{ marginTop: 32, padding: 16, background: 'var(--bg-secondary)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--text-primary)', fontWeight: 600, fontSize: 13, marginBottom: 8 }}>
-            <Lightbulb size={16} color="var(--accent)" />
-            <span className="monospace">Quick Setup</span>
+            <Lightbulb size={16} color="var(--red)" />
+            <span>Quick Setup</span>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
             <button className="btn btn-sm btn-secondary" onClick={() => setTestCreds('teacher')}>Teacher</button>
