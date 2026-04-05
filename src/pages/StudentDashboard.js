@@ -22,7 +22,7 @@ export default function StudentDashboard() {
   const [viewingAnswer, setViewingAnswer] = useState(null);
   const [submitLoading, setSubmitLoading] = useState(false);
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const loadData = useCallback(async () => {
     setLoading(true);
