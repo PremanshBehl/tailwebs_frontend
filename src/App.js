@@ -21,6 +21,12 @@ function App() {
 
   return (
     <Router>
+      <div className="grid-lines">
+        <div className="grid-line"></div>
+        <div className="grid-line"></div>
+        <div className="grid-line"></div>
+        <div className="grid-line"></div>
+      </div>
       <ToastContainer position="top-right" autoClose={3000} theme="dark" />
       <Routes>
         <Route
