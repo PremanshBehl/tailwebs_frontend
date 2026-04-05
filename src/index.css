@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 /* ─── Design Tokens ──────────────────────────────────── */
 :root {
@@ -7,7 +7,7 @@
   --bg-card:       #ffffff;
   --bg-card-hover: #ffffff;
   --border:        #e2e8f0;
-  --border-focus:  #6366f1;
+  --border-focus:  #0353a4;
 
   --accent:        #0353a4;
   --accent-hover:  #024180;
@@ -18,36 +18,35 @@
 
   --red:           #e11d48;
   --red-light:     #fff1f2;
-  --green:         #059669;
-  --green-light:   #ecfdf5;
-  --amber:         #d97706;
+  --green:         #10b981;
+  --green-light:   #f0fdf4;
+  --amber:         #f59e0b;
   --amber-light:   #fffbeb;
   --blue:          #2563eb;
   --blue-light:    #eff6ff;
 
-  --text-primary:   #111827; /* Darker Slate for professional readability */
-  --text-secondary: #4b5563;
-  --text-muted:     #9ca3af;
+  --text-primary:   #0f172a;
+  --text-secondary: #475569;
+  --text-muted:     #64748b;
 
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
   --radius-xl: 20px;
 
-  /* More Professional, Subtle Shadows */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.03), 0 2px 4px -1px rgba(0,0,0,0.02);
-  --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.02);
-  --shadow-accent: 0 10px 20px -5px rgba(79, 70, 229, 0.15);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 25px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  --shadow-accent: 0 0 15px rgba(3, 83, 164, 0.1);
 
-  --transition: all 0.25s ease-out;
+  --transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
 }
 
 /* ─── Reset ──────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
@@ -291,73 +290,79 @@ body {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   height: 64px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  background: var(--accent); /* Now use #0353a4 directly */
+  border-bottom: 1px solid rgba(255,255,255,0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
+  color: #fff;
+  box-shadow: 0 10px 15px -3px rgba(3, 83, 164, 0.15);
 }
 
 .navbar-brand {
-  display: flex;
-  align-items: baseline;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
-  color: var(--navy);
-  letter-spacing: -0.02em;
-}
-
-.auth-logo-dot {
-  color: var(--red);
+  color: #fff;
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .navbar-brand span {
-  display: inline-block;
-  margin-left: 0.5px;
+  color: rgba(255,255,255,0.5);
 }
 
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 .navbar-user {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-.navbar-brand .logo {
-  width: 32px;
-  height: 32px;
-  background: var(--accent);
-  color: #fff;
-  border-radius: var(--radius-sm);
+.navbar-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  font-size: 16px;
-  box-shadow: 0 2px 4px rgba(3, 83, 164, 0.3);
+  font-weight: 700;
+  color: #fff;
+  font-size: 14px;
 }
 
 .navbar-name {
   font-size: 14px;
-  font-weight: 500;
-  color: var(--text-primary);
+  font-weight: 600;
+  color: #fff;
 }
 
 .navbar-role {
   font-size: 11px;
-  color: var(--text-muted);
-  font-weight: 600;
+  color: rgba(255,255,255,0.7);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.navbar button.btn-secondary {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.navbar button.btn-secondary:hover {
+  background: rgba(255,255,255,0.2);
 }
 
 /* ─── Dashboard Layout ────────────────────────────────── */
@@ -367,23 +372,22 @@ body {
 }
 
 .dashboard-content {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 32px 24px;
+  padding: 40px;
 }
 
 .dashboard-header {
   margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
 }
 
 .dashboard-title {
   font-size: 28px;
   font-weight: 800;
-  color: var(--text-primary);
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  color: var(--navy);
+  letter-spacing: -0.03em;
 }
 
 .dashboard-subtitle {
