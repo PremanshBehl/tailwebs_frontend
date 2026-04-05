@@ -113,7 +113,7 @@ body {
 }
 
 .auth-logo-dot {
-  color: var(--red);
+  color: var(--accent);
 }
 
 .auth-title {
