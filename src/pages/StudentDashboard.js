@@ -87,10 +87,13 @@ export default function StudentDashboard() {
 
         {/* Header */}
         <div className="dashboard-header">
-          <h1 className="dashboard-title">
-            <GraduationCap size={28} /> Student Dashboard
-          </h1>
-          <p className="dashboard-subtitle">View and submit your published assignments</p>
+          <div style={{ maxWidth: '600px' }}>
+            <h1 className="dashboard-title">Student <span className="text-editorial">*Portal*</span></h1>
+            <p className="dashboard-subtitle" style={{ marginTop: '16px' }}>
+              <span style={{ float: 'left', fontSize: '64px', lineHeight: '0.8', marginRight: '16px', fontFamily: "'Playfair Display', serif", fontWeight: '700' }}>W</span>
+              elcome to your academic portfolio. Below you will find your current curriculum and pending tasks. Each assignment is a step towards mastery and refinement.
+            </p>
+          </div>
         </div>
 
         {/* Stats */}
