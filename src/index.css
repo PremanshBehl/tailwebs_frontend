@@ -109,7 +109,7 @@ body {
 .auth-logo-text {
   font-size: 24px;
   font-weight: 800;
-  color: var(--red);
+  color: var(--navy);
 }
 
 .auth-logo-dot {
@@ -153,9 +153,9 @@ body {
 }
 
 .auth-tab.active {
-  background: var(--accent);
+  background: var(--red);
   color: #fff;
-  box-shadow: 0 2px 8px rgba(99,102,241,0.4);
+  box-shadow: 0 2px 8px rgba(237, 28, 36, 0.4);
 }
 
 /* ─── Form Controls ───────────────────────────────────── */
@@ -237,7 +237,7 @@ body {
 }
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(99,102,241,0.5);
+  box-shadow: 0 4px 20px rgba(237, 28, 36, 0.5);
 }
 .btn-primary:active:not(:disabled) { transform: translateY(0); }
 
@@ -248,7 +248,8 @@ body {
 }
 .btn-secondary:hover:not(:disabled) {
   background: var(--bg-card-hover);
-  border-color: var(--accent);
+  border-color: var(--navy-light);
+  color: var(--navy);
 }
 
 .btn-danger {
@@ -302,10 +303,14 @@ body {
 .navbar-brand {
   display: flex;
   align-items: baseline;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
-  color: var(--red);
+  color: var(--navy);
   letter-spacing: -0.02em;
+}
+
+.auth-logo-dot {
+  color: var(--red);
 }
 
 .navbar-brand span {
@@ -333,7 +338,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 14px;
   color: #fff;
 }
@@ -346,7 +351,7 @@ body {
 
 .navbar-role {
   font-size: 11px;
-  color: var(--accent);
+  color: var(--text-muted);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -355,9 +360,7 @@ body {
 /* ─── Dashboard Layout ────────────────────────────────── */
 .dashboard {
   min-height: 100vh;
-  background:
-    radial-gradient(ellipse 60% 40% at 70% 10%, rgba(99,102,241,0.08) 0%, transparent 50%),
-    var(--bg-primary);
+  background: var(--bg-primary);
 }
 
 .dashboard-content {
@@ -503,7 +506,7 @@ body {
 }
 
 .assignment-card:hover {
-  border-color: rgba(99,102,241,0.4);
+  border-color: var(--red);
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }

@@ -262,23 +262,23 @@ export default function StudentDashboard() {
 
             <form onSubmit={handleSubmit(onSubmitAnswer)} noValidate>
               <div className="form-group">
-                <label className="form-label" htmlFor="answer">Your Answer (Optional if attaching a file)</label>
+                <label className="form-label" htmlFor="answer">Your Answer - Mandatory if no file attached</label>
                 <textarea
                   id="answer"
                   className="form-textarea"
-                  placeholder="Write your answer here or upload a file…"
+                  placeholder="Type your answer here or attach your PDF below…"
                   rows={6}
                   {...register('answer')}
                 />
               </div>
 
               <div className="form-group">
-                <label className="form-label" htmlFor="f-file">Upload File (PDF, Image, Doc)</label>
+                <label className="form-label" htmlFor="f-file">Upload Assignment (PDF/Image)</label>
                 <input
                   id="f-file"
                   type="file"
                   className="form-input"
-                  style={{ padding: '8px' }}
+                  style={{ padding: '10px', background: '#f8fafc', border: '2px dashed #0f172a1a' }}
                   {...register('file')}
                 />
               </div>

@@ -15,7 +15,8 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const { loading, error } = useSelector((s) => s.auth);
 
-  const { register: reg, handleSubmit, reset, formState: { errors } } = useForm();
+  const { register: reg, handleSubmit, watch, reset, formState: { errors } } = useForm();
+  const selectedRole = watch('role');
 
   const toggleMode = () => {
     setMode(m => m === 'login' ? 'register' : 'login');
@@ -160,6 +161,23 @@ export default function LoginPage() {
                 <option value="teacher">Teacher</option>
               </select>
               {errors.role && <p className="form-error">{errors.role.message}</p>}
+            </div>
+          )}
+
+          {/* Subject — register only for teachers */}
+          {mode === 'register' && selectedRole === 'teacher' && (
+            <div className="form-group">
+              <label className="form-label" htmlFor="f-subject">Subject Area</label>
+              <select id="f-subject" className="form-select" {...reg('subject', { required: 'Subject is required' })}>
+                <option value="">Select a subject…</option>
+                <option value="maths">Mathematics</option>
+                <option value="science">Science</option>
+                <option value="english">English</option>
+                <option value="history">History</option>
+                <option value="computer science">Computer Science</option>
+                <option value="other">Other</option>
+              </select>
+              {errors.subject && <p className="form-error">{errors.subject.message}</p>}
             </div>
           )}
 
