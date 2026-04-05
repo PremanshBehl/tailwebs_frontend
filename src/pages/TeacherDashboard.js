@@ -85,7 +85,15 @@ export default function TeacherDashboard() {
   const onSubmitCreate = async (data) => {
     setFormLoading(true);
     try {
-      await createAssignment({ ...data, dueDate: new Date(data.dueDate).toISOString() });
+      const formData = new FormData();
+      formData.append('title', data.title);
+      formData.append('description', data.description);
+      formData.append('dueDate', new Date(data.dueDate).toISOString());
+      if (data.file && data.file[0]) {
+        formData.append('file', data.file[0]);
+      }
+
+      await createAssignment(formData);
       toast.success('Assignment created!');
       setShowCreate(false);
       reset({});
@@ -100,11 +108,15 @@ export default function TeacherDashboard() {
   const onSubmitEdit = async (data) => {
     setFormLoading(true);
     try {
-      await updateAssignment(editingAssignment._id, {
-        title: data.title,
-        description: data.description,
-        dueDate: new Date(data.dueDate).toISOString(),
-      });
+      const formData = new FormData();
+      formData.append('title', data.title);
+      formData.append('description', data.description);
+      formData.append('dueDate', new Date(data.dueDate).toISOString());
+      if (data.file && data.file[0]) {
+        formData.append('file', data.file[0]);
+      }
+
+      await updateAssignment(editingAssignment._id, formData);
       toast.success('Assignment updated!');
       setEditingAssignment(null);
       reset({});
@@ -200,6 +212,17 @@ export default function TeacherDashboard() {
           {...register('dueDate', { required: 'Due date is required' })}
         />
         {errors.dueDate && <p className="form-error">{errors.dueDate.message}</p>}
+      </div>
+
+      <div className="form-group">
+        <label className="form-label" htmlFor="f-file">Attachments (Optional)</label>
+        <input
+          id="f-file"
+          type="file"
+          className="form-input"
+          style={{ padding: '8px' }}
+          {...register('file')}
+        />
       </div>
 
       <div className="modal-actions">
@@ -329,6 +352,13 @@ export default function TeacherDashboard() {
                       <span className="assignment-stats">
                         <Users size={13} /> Subs: {a.submissionCount}
                       </span>
+                      {a.fileUrl && (
+                        <span className="assignment-stats">
+                          <a href={a.fileUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue)' }}>
+                            📎 {a.originalFileName || 'Attachment'}
+                          </a>
+                        </span>
+                      )}
                     </div>
 
                     <div className="assignment-actions">
@@ -452,7 +482,16 @@ export default function TeacherDashboard() {
                           <div style={{ fontWeight: 600 }}>{s.student?.name}</div>
                           <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>{s.student?.email}</div>
                         </td>
-                        <td className="td-answer">{s.answer}</td>
+                        <td className="td-answer">
+                          {s.answer}
+                          {s.fileUrl && (
+                            <div style={{ marginTop: '4px' }}>
+                              <a href={s.fileUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue)', fontSize: '13px' }}>
+                                📎 {s.originalFileName || 'Attachment'}
+                              </a>
+                            </div>
+                          )}
+                        </td>
                         <td style={{ fontSize: 12, color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>
                           {format(new Date(s.submittedAt), 'MMM d, yyyy HH:mm')}
                         </td>

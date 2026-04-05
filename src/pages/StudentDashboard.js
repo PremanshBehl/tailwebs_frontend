@@ -57,7 +57,14 @@ export default function StudentDashboard() {
   const onSubmitAnswer = async (data) => {
     setSubmitLoading(true);
     try {
-      await submitAnswer({ assignmentId: submittingFor._id, answer: data.answer });
+      const formData = new FormData();
+      formData.append('assignmentId', submittingFor._id);
+      formData.append('answer', data.answer || '');
+      if (data.file && data.file[0]) {
+        formData.append('file', data.file[0]);
+      }
+
+      await submitAnswer(formData);
       toast.success('Answer submitted successfully!');
       setSubmittingFor(null);
       reset({});
@@ -239,6 +246,11 @@ export default function StudentDashboard() {
               <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                 {submittingFor.description}
               </p>
+              {submittingFor.fileUrl && (
+                <a href={submittingFor.fileUrl} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: 12, fontSize: 13, color: 'var(--blue)' }}>
+                  📎 {submittingFor.originalFileName || 'View attached worksheet'}
+                </a>
+              )}
               <p style={{ fontSize: 12, color: 'var(--amber)', marginTop: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
                 <Clock size={12} /> Due: {format(new Date(submittingFor.dueDate), 'MMM d, yyyy · HH:mm')}
               </p>
@@ -250,19 +262,25 @@ export default function StudentDashboard() {
 
             <form onSubmit={handleSubmit(onSubmitAnswer)} noValidate>
               <div className="form-group">
-                <label className="form-label" htmlFor="answer">Your Answer</label>
+                <label className="form-label" htmlFor="answer">Your Answer (Optional if attaching a file)</label>
                 <textarea
                   id="answer"
                   className="form-textarea"
-                  placeholder="Write your answer here…"
+                  placeholder="Write your answer here or upload a file…"
                   rows={6}
-                  {...register('answer', {
-                    required: 'Answer is required',
-                    minLength: { value: 10, message: 'Please write at least 10 characters' },
-                    maxLength: { value: 5000, message: 'Max 5000 characters' }
-                  })}
+                  {...register('answer')}
                 />
-                {errors.answer && <p className="form-error">{errors.answer.message}</p>}
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="f-file">Upload File (PDF, Image, Doc)</label>
+                <input
+                  id="f-file"
+                  type="file"
+                  className="form-input"
+                  style={{ padding: '8px' }}
+                  {...register('file')}
+                />
               </div>
 
               <div className="modal-actions">
@@ -308,7 +326,17 @@ export default function StudentDashboard() {
             </div>
 
             <div className="submitted-label"><FileText size={12} /> Your Answer</div>
-            <div className="answer-box">{viewingAnswer.submission.answer}</div>
+            <div className="answer-box">
+              {viewingAnswer.submission.answer || <em>No text answer provided.</em>}
+            </div>
+            
+            {viewingAnswer.submission.fileUrl && (
+              <div style={{ marginTop: 12 }}>
+                <a href={viewingAnswer.submission.fileUrl} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', fontSize: 13, color: 'var(--blue)' }}>
+                  📎 {viewingAnswer.submission.originalFileName || 'View uploaded file'}
+                </a>
+              </div>
+            )}
 
             <div className="modal-actions">
               <button className="btn btn-secondary" onClick={() => setViewingAnswer(null)}>Close</button>
