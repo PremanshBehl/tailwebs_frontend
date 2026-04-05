@@ -9,9 +9,9 @@
   --border:        #e2e8f0;
   --border-focus:  #6366f1;
 
-  --accent:        #4f46e5;
-  --accent-hover:  #4338ca;
-  --accent-light:  rgba(79, 70, 229, 0.05);
+  --accent:        #0353a4;
+  --accent-hover:  #024180;
+  --accent-light:  rgba(3, 83, 164, 0.05);
 
   --navy:          #0f172a;
   --navy-light:    #1e293b;
@@ -156,7 +156,7 @@ body {
 .auth-tab.active {
   background: var(--accent);
   color: #fff;
-  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+  box-shadow: 0 2px 8px rgba(3, 83, 164, 0.3);
 }
 
 /* ─── Form Controls ───────────────────────────────────── */
@@ -234,11 +234,11 @@ body {
 .btn-primary {
   background: var(--accent);
   color: #fff;
-  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+  box-shadow: 0 4px 6px -1px rgba(3, 83, 164, 0.2);
 }
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4);
+  box-shadow: 0 4px 20px rgba(3, 83, 164, 0.4);
 }
 .btn-primary:active:not(:disabled) { transform: translateY(0); }
 
@@ -332,17 +332,18 @@ body {
   gap: 10px;
 }
 
-.navbar-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--red);
+.navbar-brand .logo {
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-  font-size: 14px;
-  color: #fff;
+  font-weight: 800;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(3, 83, 164, 0.3);
 }
 
 .navbar-name {
