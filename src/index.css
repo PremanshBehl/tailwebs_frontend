@@ -2,44 +2,45 @@
 
 /* ─── Design Tokens ──────────────────────────────────── */
 :root {
-  --bg-primary:    #fcfcfd;
-  --bg-secondary:  #f8fafc;
+  --bg-primary:    #f8fafc;
+  --bg-secondary:  #f1f5f9;
   --bg-card:       #ffffff;
-  --bg-card-hover: #f1f5f9;
+  --bg-card-hover: #ffffff;
   --border:        #e2e8f0;
   --border-focus:  #6366f1;
 
-  --accent:        #6366f1;
-  --accent-hover:  #4f46e5;
-  --accent-light:  rgba(99, 102, 241, 0.08);
+  --accent:        #4f46e5;
+  --accent-hover:  #4338ca;
+  --accent-light:  rgba(79, 70, 229, 0.05);
 
   --navy:          #0f172a;
   --navy-light:    #1e293b;
 
-  --red:           #ef4444;
-  --red-light:     rgba(239, 68, 68, 0.1);
-  --green:         #10b981;
+  --red:           #e11d48;
+  --red-light:     #fff1f2;
+  --green:         #059669;
   --green-light:   #ecfdf5;
-  --amber:         #f59e0b;
+  --amber:         #d97706;
   --amber-light:   #fffbeb;
-  --blue:          #3b82f6;
+  --blue:          #2563eb;
   --blue-light:    #eff6ff;
 
-  --text-primary:   #0f172a;
+  --text-primary:   #111827; /* Darker Slate for professional readability */
   --text-secondary: #4b5563;
   --text-muted:     #9ca3af;
 
   --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
 
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.06), 0 2px 4px -1px rgba(0,0,0,0.04);
-  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
-  --shadow-accent: 0 0 15px rgba(99, 102, 241, 0.1);
+  /* More Professional, Subtle Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.03), 0 2px 4px -1px rgba(0,0,0,0.02);
+  --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.02);
+  --shadow-accent: 0 10px 20px -5px rgba(79, 70, 229, 0.15);
 
-  --transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+  --transition: all 0.25s ease-out;
 }
 
 /* ─── Reset ──────────────────────────────────────────── */
@@ -400,18 +401,19 @@ body {
 .stat-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 20px;
+  border-radius: var(--radius-lg);
+  padding: 24px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   transition: var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .stat-card:hover {
   border-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
 }
 
 .stat-icon {
@@ -572,23 +574,23 @@ body {
 
 /* ─── Status Badge ────────────────────────────────────── */
 .badge {
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 100px;
   font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 0.01em;
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
-.badge-draft    { background: var(--bg-secondary); color: var(--text-muted); border: 1px solid var(--border); }
-.badge-published { background: var(--blue-light); color: var(--blue); border: 1px solid rgba(59,130,246,0.3); }
-.badge-completed { background: var(--green-light); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
-.badge-submitted { background: var(--red-light); color: var(--red); border: 1px solid rgba(237, 28, 36, 0.3); }
-.badge-pending  { background: var(--amber-light); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+.badge-draft    { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; }
+.badge-published { background: #eff6ff; color: #2563eb; border: 1px solid #dbeafe; }
+.badge-completed { background: #ecfdf5; color: #059669; border: 1px solid #d1fae5; }
+.badge-submitted { background: #fff1f2; color: #e11d48; border: 1px solid #ffe4e6; }
+.badge-pending  { background: #fffbeb; color: #d97706; border: 1px solid #fef3c7; }
 
 /* ─── Modal ───────────────────────────────────────────── */
 .modal-overlay {
